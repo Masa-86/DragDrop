@@ -18,6 +18,9 @@ namespace DragDrop.iOS.Effect
         UIView view;
         TouchRecognizer touchRecognizer;
 
+        /// <summary>
+        /// イベントのアタッチ
+        /// </summary>
         protected override void OnAttached()
         {
             view = Control == null ? Container : Control;
@@ -33,6 +36,9 @@ namespace DragDrop.iOS.Effect
             }
         }
 
+        /// <summary>
+        /// イベントのデタッチ
+        /// </summary>
         protected override void OnDetached()
         {
             if (touchRecognizer != null)

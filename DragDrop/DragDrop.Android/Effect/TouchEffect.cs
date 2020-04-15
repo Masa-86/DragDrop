@@ -19,7 +19,9 @@ namespace DragDrop.Droid.Effect
 {
     public class TouchEffect : PlatformEffect
     {
+        // イベントを捕捉するView
         Android.Views.View view;
+        // イベントが発生したコントロール
         Element element;
         DragDrop.View.MyEffect.TouchEffect tEffect;
 
@@ -29,6 +31,9 @@ namespace DragDrop.Droid.Effect
         static Dictionary<Android.Views.View, TouchEffect> viewDictionary = new Dictionary<Android.Views.View, TouchEffect>();
         static Dictionary<int, TouchEffect> idToEffectDictionary = new Dictionary<int, TouchEffect>();
 
+        /// <summary>
+        /// イベントのアタッチ
+        /// </summary>
         protected override void OnAttached()
         {
             view = Control == null ? Container : Control;
@@ -41,6 +46,9 @@ namespace DragDrop.Droid.Effect
             }
         }
 
+        /// <summary>
+        /// イベントのでタッチ
+        /// </summary>
         protected override void OnDetached()
         {
             if (viewDictionary.ContainsKey(view))
