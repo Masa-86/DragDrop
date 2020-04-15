@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:t="clr-namespace:DragDrop.View.MyEffect"
+             mc:Ignorable="d"
+             x:Class="DragDrop.MainPage">
+
+    <StackLayout>
+        <StackLayout x:Name="stlDragDrop" Orientation="Vertical">
+            <Button Text="test"/>
+            <CollectionView x:Name="cltDragDrop" 
+                            ItemsSource="{Binding DragDropItems}">
+                <CollectionView.Header>
+                    <StackLayout BackgroundColor="Aqua">
+                        <Button x:Name="Add_Button"
+                                Text="追加"
+                                TextColor="Black"
+                                WidthRequest="70"
+                                HorizontalOptions="End"/>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="grdDragDropList"
+                              Padding="10"
+                              HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.Effects>
+                                <t:TouchEffect OnTouch="TouchEffect_OnTouch"></t:TouchEffect>
+                            </Grid.Effects>
+                            <Label Text="{Binding RowNo}"
+                                   FontSize="Small"
+                                   TextColor="Black"
+                                   Grid.Row="0"
+                                   Grid.Column="0"/>
+                            <Entry Text="{Binding TaskValue}"
+                                   WidthRequest="200"
+                                   Grid.Row="0"
+                                   Grid.Column="1"/>
+                            <Button x:Name="Drag"
+                                    Text="⇔"
+                                    Clicked="Drag_Clicked"
+                                    Pressed="Drag_Pressed"
+                                    Released="Drag_Released"
+                                    Grid.Row="0"
+                                    Grid.Column="2"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
